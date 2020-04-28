@@ -214,7 +214,6 @@
 	var/shoot_time = (burst - 1)* burst_delay
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
 	user.setMoveCooldown(shoot_time) //no moving while shooting either
-	user.ear_deaf += 30
 	next_fire_time = world.time + shoot_time
 
 	var/held_twohanded = wielded//(user.can_wield_item(src) && src.is_held_twohanded(user))
@@ -390,7 +389,6 @@
 
 	if(launched)
 		play_fire_sound(user,P)
-
 	return launched
 
 /obj/item/weapon/gun/proc/unjam(var/mob/M)
@@ -410,7 +408,9 @@
 		playsound(user, shot_sound, 10, 1)
 	else
 		playsound(user, shot_sound, 50, 1)
-
+	if(!user.skillcheck(user.skills["audio"], 50))
+		playsound(src.loc, 'sound/effects/earing.ogg', 50, 1)
+		user.ear_deaf += 15
 //Suicide handling.
 /obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 /obj/item/weapon/gun/proc/handle_suicide(mob/living/user)
