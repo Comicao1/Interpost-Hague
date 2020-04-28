@@ -12,7 +12,6 @@
 	var/projectile_type = /obj/item/projectile/beam/practice
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
-
 	//self-recharging
 	var/self_recharge = 0	//if set, the weapon will recharge itself
 	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
@@ -20,7 +19,7 @@
 	var/charge_tick = 0
 	var/icon_rounder = 25
 	combustion = 1
-
+	candeaf = 0
 /obj/item/weapon/gun/energy/switch_firemodes()
 	. = ..()
 	if(.)

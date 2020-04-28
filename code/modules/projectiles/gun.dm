@@ -71,6 +71,7 @@
 	var/has_jammed = FALSE
 	var/jam_chance = 0  //Chance it jams on fire
 	var/safety = 1		//Whether or not the safety is on. BLESS YOU MATT
+	var/candeaf = 1
 
 	var/next_fire_time = 0
 
@@ -408,7 +409,7 @@
 		playsound(user, shot_sound, 10, 1)
 	else
 		playsound(user, shot_sound, 50, 1)
-	if(!user.skillcheck(user.skills["audio"], 50))
+	if(!user.skillcheck(user.skills["audio"], 50) && candeaf == 1)
 		playsound(src.loc, 'sound/effects/earing.ogg', 50, 1)
 		user.ear_deaf += 15
 //Suicide handling.
