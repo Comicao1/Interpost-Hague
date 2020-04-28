@@ -214,6 +214,7 @@
 	var/shoot_time = (burst - 1)* burst_delay
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
 	user.setMoveCooldown(shoot_time) //no moving while shooting either
+	user.ear_deaf += 30
 	next_fire_time = world.time + shoot_time
 
 	var/held_twohanded = wielded//(user.can_wield_item(src) && src.is_held_twohanded(user))
